@@ -6,17 +6,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\AnnonceRepository;
 use App\Repository\UserRepository;
+use App\Service\StatsService;
 
 class HomeController extends AbstractController
 {
     /**
      * @Route("/", name="homepage")
      */
-    public function home(AnnonceRepository $annonceRepo, UserRepository $userRepo)
+    public function home(AnnonceRepository $annonceRepo, UserRepository $userRepo,
+        StatsService $statsService)
     {
-        return $this->render('home/home.html.twig',[
+        $stats = $statsService->getStats();
+        
+        return $this->render('home/home4.html.twig',[
+            'stats' => $stats,
             'annonces' => $annonceRepo->findBestAnnonces(3),
-            'users' => $userRepo->findBestUser(2)
+            'users' => $userRepo->findBestUser(3)
         ]);
     }
 }

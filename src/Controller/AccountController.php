@@ -69,7 +69,7 @@ class AccountController extends AbstractController
             $manager->persist($user);
             $manager->flush();
             
-            $this->addFlash('success', "Votre compte a bien été créer, vous pouvez vous connecter");
+            $this->addFlash('success', "Votre compte a bien Ã©tÃ© crÃ©er, vous pouvez vous connecter");
             
             return $this->redirectToRoute('account_login');
         }
@@ -100,7 +100,7 @@ class AccountController extends AbstractController
             $manager->persist($user);
             $manager->flush();
             
-            $this->addFlash('success', "Votre compte a bien été modifier");    
+            $this->addFlash('success', "Votre compte a bien Ã©tÃ© modifier");    
         }
         
         return $this->render('account/edituser.html.twig', [
@@ -148,7 +148,7 @@ class AccountController extends AbstractController
                 $manager->persist($user);
                 $manager->flush();
                 
-                $this->addFlash('success', "Votre mot de passe a bien été modifier");
+                $this->addFlash('success', "Votre mot de passe a bien Ã©tÃ© modifier");
                 
                 return $this->redirectToRoute('homepage');
             }

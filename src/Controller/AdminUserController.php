@@ -47,7 +47,7 @@ class AdminUserController extends AbstractController
             
             $this->addFlash(
                 'success',
-                "L'utilisateur a bien été modifié"
+                "L'utilisateur a bien Ã©tÃ© modifiÃ©"
             );
             
             return $this->redirectToRoute('admin_users_index'); 
@@ -75,7 +75,7 @@ class AdminUserController extends AbstractController
             $this->addFlash(
                 'warning',
                 "Vous ne pouvez pas supprimer l'annonce <strong>{$user->getFullName()}</strong>
-                    car elle est déja des commandes ou des annonces en ligne"
+                    car elle est dÃ©ja des commandes ou des annonces en ligne"
             );
         }else{
             $manager->remove($user);
@@ -83,7 +83,7 @@ class AdminUserController extends AbstractController
             
             $this->addFlash(
                 'success',
-                "L'utilisateur <strong>{$user->getFullName()}</strong> a bien été supprimé");
+                "L'utilisateur <strong>{$user->getFullName()}</strong> a bien Ã©tÃ© supprimÃ©");
         }
         return $this->redirectToRoute('admin_users_index');
     }

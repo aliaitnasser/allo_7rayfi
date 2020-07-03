@@ -13,6 +13,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\Role;
 use App\Entity\Comment;
 use App\Entity\Achat;
+use App\Entity\Rating;
 
 class AppFixtures extends Fixture
 {
@@ -27,11 +28,13 @@ class AppFixtures extends Fixture
         $faker = Factory::create('FR-fr');
         
         //creation du role admin
+        
         $adminRole = new Role();
         $adminRole->setTitle('ROLE_ADMIN');
         $manager->persist($adminRole);
         
         //creation de l'utilisateur admin
+        
         $adminUser = new User();
         $adminUser->setFirstName('Ali')
                   ->setLastName('Ait Nasser')
@@ -42,15 +45,19 @@ class AppFixtures extends Fixture
                   ->setHash($this->encoder->encodePassword($adminUser, "alixisali"))
                   ->setPicture('/images/picture.jpg')
                   ->setPhone('0669945363')
+                  ->setCity('rabat')
+                  ->setJob('')
                   ->addUserRole($adminRole);
         $manager->persist($adminUser);
         
         //gestion des users
         
         $users = [];
+        $cities = ['rabat', 'casablanca', 'sale', 'kenitra', 'fes', 'marrakech', 'tanger', 'asilah', 'tetouan', 'agadir', 'laayoun', 'oujda', 'elhoceima'];
+        $job = ['plomberie', 'maconnerie', 'climatisation', 'chauffage', 'chauffeur','coiffeur', 'peinture', 'femme de ménage', 'soudeur'];
         $genres = ['male', 'female'];
         
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 40; $i++) {
             $user = new User();
             
             $genre = $faker->randomElement($genres);
@@ -61,7 +68,7 @@ class AppFixtures extends Fixture
             $picture .= ($genre == 'male' ? 'men/' : 'wemen/'). $pictureId;
             
             $hash = $this->encoder->encodePassword($user, 'password');
-            
+
             $user->setFirstName($faker->firstName($genre))
                  ->setLastName($faker->lastName)
                  ->setAddress($faker->address)
@@ -70,17 +77,40 @@ class AppFixtures extends Fixture
                  ->setIntroduction($faker->sentence)
                  ->setPhone($faker->phoneNumber)
                  ->setHash($hash)
+                 ->setCity($cities[mt_rand(0, count($cities) - 1)])
+                 ->setJob($job[mt_rand(0, count($job) -1 )])
                  ->setPicture("/images/plombier.jpg");
             
             $manager->persist($user);
             $users[] = $user;
+            
+        }
+        
+        // creation de la notation des utilisateurs
+        
+        for ($i = 0; $i <= count($users); $i++) {
+            
+            if (mt_rand(0,2)) {
+                
+                $author = $users[mt_rand(0, 20)];
+                $artisan = $users[mt_rand(21, count($users) - 1)];
+                
+                $rating = new Rating();
+                $rating->setComment($faker->sentence)
+                ->setAuthor($author)
+                ->setUser($artisan)
+                ->setNote(mt_rand(1,5));
+                $manager->persist($rating);
+            }
+            
         }
         
         //gestion des annonces
+        
         for ($i = 1; $i <= 30; $i++) {
             $annonce = new Annonce();
             
-            $title = $faker->sentence();
+            $title = $faker->word;
             $coverImage = $faker->imageUrl(1000,350);
             $introduction = $faker->paragraph(2);
             
@@ -125,6 +155,7 @@ class AppFixtures extends Fixture
             }
             
             //gestion des commentaires
+            
             for ($a = 0; $a < mt_rand(1,3); $a++) {
                 if(mt_rand(0,1)){
                     $comment = new Comment();

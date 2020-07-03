@@ -7,24 +7,24 @@
 	<div class="row">
 		<div class="col-md-3">&nbsp;</div>
 		<div class="col-md-6">
-			<div class="bg-light py-3 px-3">
-				<h1>Connectez vous !</h1>
+			<div class="bg-dark py-3 px-3">
+				<h1 class="my-2" style="color:white"><i class="fas fa-door-open"></i> Connectez vous !</h1>
 				{% if hasError %}
 				<div class="alert alert-danger">
-					Email ou mot de passe incorrect
+					<i class="fas fa-exclamation-triangle"></i> Email ou mot de passe incorrect
 				</div>
 				{% endif %}
     			<form action="{{ path('account_login') }}" method="post">
                     <div class="form-group">
-                    	<label for="email">Email</label>
-                    	<input type="text" name="_username" id="email" class="form-control" placeholder="Adresse Email ..." required ">
+                    	<label for="email"><i class="fas fa-at"></i> Email</label>
+                    	<input type="text" name="_username" id="email" class="form-control" placeholder="Adresse Email ..." required>
                     </div>
                     <div class="form-group">
-                    	<label for="password">Mot de passe</label>
+                    	<label for="password"><i class="fas fa-unlock-alt"></i> Mot de passe</label>
                     	<input type="password" name="_password" id="password" class="form-control" placeholder="Mot de pass ..." required>
                     </div>
                     <div class="form-group">
-                    	<button type="submit" class="btn btn-success">Connexion !</button>
+                    	<button type="submit" class="btn btn-success"><i class="far fa-check-circle"></i> Connexion !</button>
                     </div>
                 </form>
 			</div>	

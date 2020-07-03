@@ -1,0 +1,35 @@
+
+{% set url =  path('annonces_show', {'slug': annonce.slug}) %}
+
+<div class="col-lg-4 col-md-6 ad-item filter-web wow fadeInUp" data-wow-delay="0.1s">
+    <div class="ad-wrap">
+
+        <figure>
+            <img src="{{ annonce.coverImage }}" class="img-fluid" alt="">
+            <a href="{{ annonce.coverImage }}" class="link-preview venobox" data-gall="ad-gallery" title="Charpentier bois"><i class="ion ion-eye"></i></a>
+            <a href="{{ url }}" class="link-details" title="voir l'annonce"><i class="ion ion-android-open"></i></a>
+        </figure>
+
+        <div class="ad-info">
+
+            <h4><a href="{{ url }}">{{ annonce.title }}</a> - {{ annonce.price }} DH</h4>
+
+            {% if annonce.comments|length > 0 %}
+				<small>
+					{% include 'partials/rating.html.twig' with {'rating' : annonce.avgRatings} %} 
+				</small>
+			{% else %}	
+				<small>Pas encore noté</small>
+			{% endif %}
+
+            {% if app.user and app.user == annonce.author %}
+				<a href="{{ path('annonces_edit' , {'slug': annonce.slug}) }}" class="btn btn-secondary mb-2">Modifier l'annonce</a>
+		   		<a href="{{ path('annonces_delete', {'slug': annonce.slug}) }}" class="btn btn-danger" 
+				onclick="return confirm(`étes vous sur de vouloir supprimer l'annonce ?`)">Supprimer l'annonce</a>
+		    {% else %}
+				<a href="{{ url }}" class="btn btn-primary float-right">Voir l'annonce</a>
+		    {% endif %}	
+
+        </div>
+    </div>
+</div>

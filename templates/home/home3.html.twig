@@ -1,0 +1,573 @@
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	
+    <title>Allo 7rayfi - {% block title %}Welcome!{% endblock %}</title>
+    <meta content="" name="لبلاصة لي كتجمع كل الحريفية ديال المغرب بزبناء ديالهم">
+    <meta content="" name="لبلاصة لي كتجمع كل الحريفية ديال المغرب بزبناء ديالهم">
+    
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+	
+    <link href="/build/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5156cfcfdd.js" crossorigin="anonymous"></script>
+    <link href="/build/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="/build/animate/animate.min.css" rel="stylesheet">
+    <link href="/build/venobox/venobox.css" rel="stylesheet">
+    <link href="/build/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <link rel="shortcut icon" type="image/png" href="img/Logo.png" >
+    
+    <link rel="stylesheet" href="/build/css/app.css">
+
+</head>
+<body>
+<!-- ======= Header hrayfi arab revrse < ======= -->
+<header id="headerr">
+
+	<div class="container-fluid">
+		<div id="logo" class="pull-left">
+			<a href="{{ path('homepage') }}"><img src="/img/Logo.png" alt=""></a>
+		</div>
+		<nav id="nav-menu-container">
+			<ul class="nav-menu">
+				<li class="menu-active"><a href="#intro">Accueil</a></li>
+				<li><a href="#about">annonces</a></li>
+			</ul>
+			<ul class="nav-menu">
+				{% if app.user %}
+					<li><a href="#about">mon compte</a></li>
+					<li><a href="#about">crée une annonce</a></li>
+					<li><a href="#services">Déconnexion</a></li
+				{% else %}
+					<li><a href="{{ path('account_login') }}">se connecter</a></li>
+					<li><a href="#about">inscrivez-vous</a></li>
+				{% endif %}
+			</ul>
+      	</nav>
+	</div>
+	
+</header>
+<!-- End Header -->
+<!-- ======= Intro Section (SLIDER) ======= -->
+ <section id="intro">
+	<div class="intro-container">
+		<div id="introCarousel" class="carousel  slide carousel-fade"
+			data-ride="carousel">
+			<ol class="carousel-indicators"></ol>
+			<div class="carousel-inner" role="listbox">
+
+				<div class="carousel-item active">
+					<div class="carousel-background">
+						<img src="/img/intro-carousel/1.jpg" alt="">
+					</div>
+					<div class="carousel-container">
+						<div class="carousel-content">
+
+							<p></p>
+							<h2>L’endroit qui regroupe tous les artisans qualifiés avec leurs clients</h2>
+							<a href="{{ path('user_search') }}" class="btn-get-started scrollto">Recherche</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="carousel-item">
+					<div class="carousel-background">
+						<img src="/img/intro-carousel/2.jpg" alt="">
+					</div>
+					<div class="carousel-container">
+						<div class="carousel-content">
+							<p></p>
+							<h2>Trouvez les meilleurs Artisans près de chez vous</h2>
+							<a href="{{ path('user_search') }}" class="btn-get-started scrollto">Recherche</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="carousel-item">
+					<div class="carousel-background">
+						<img src="/img/intro-carousel/3.jpg" alt="">
+					</div>
+					<div class="carousel-container">
+						<div class="carousel-content">
+							<p></p>
+							<h2>Les Meilleurs artisans du Maroc</h2>
+							<a href="{{ path('user_search') }}" class="btn-get-started scrollto">Recherche</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<a class="carousel-control-prev" href="#introCarousel" role="button"
+				data-slide="prev"> <span
+				class="carousel-control-prev-icon ion-chevron-left"
+				aria-hidden="true"></span> <span class="sr-only">Précédent</span>
+			</a> <a class="carousel-control-next" href="#introCarousel" role="button"
+				data-slide="next"> <span
+				class="carousel-control-next-icon ion-chevron-right"
+				aria-hidden="true"></span> <span class="sr-only">Suivant</span>
+			</a>
+		</div>
+	</div>
+</section>
+<!-- End Intro Section -->
+
+<main id="main">
+
+<!-- ======= Featured Services Section (" boxes under the sliders") ======= -->
+<section id="featured-services">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-lg-4 box">
+				<ion-icon name="checkmark-done-outline" size="large" color=""></ion-icon>
+				<h4 class="title">
+					<a href="">Nous réalisons pleinement l'importance de la qualité</a>
+				</h4>
+			</div>
+
+			<div class="col-lg-4 box box-bg">
+				<ion-icon name="checkmark-done-outline" size="large" color=""></ion-icon>
+				<h4 class="title">
+					<a href=""> Le client n’est pas juste un simple numéro</a>
+				</h4>
+			</div>
+
+			<div class="col-lg-4 box">
+				<ion-icon name="checkmark-done-outline" size="large" color=""></ion-icon>
+				<h4 class="title">
+					<a href=""> Nous faisons bien attention aux petits détails</a>
+				</h4>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<!-- End Featured Services Section -->
+	
+	<!-- ======= Subscibe with us Section (client and hrayfi) ======= -->
+<section id="subscibe">
+	<div class="container">
+
+		<header class="section-header">
+			<h3>Rejoignez nous</h3>
+			<p>Faite le premier pats , contactez-nous et le reste c’est ALLO7RAYFI qui s’en occupera  </p>
+		</header>
+
+		<div class="row subscibe-cols">
+			<div class="col-md-6 wow fadeInUp">
+				<div class="subscibe-col">
+					<div class="img">
+						<img src="/img/about-mission.jpg" alt="" class="img-fluid">
+						<div class="icon">
+							<ion-icon name="hammer-outline" size="large"></ion-icon>
+						</div>
+					</div>
+					<h2 class="title">
+						<a href="{{ path('account_register') }}">Artisan</a>
+					</h2>
+					<p class="description">
+						C’est une personne qualifié, et grâce à ses techniques selon le métier dans lequel il est spécialisé,
+                		il viendra au besoin du client demandeur
+					</p>
+					<div class="text-center">
+						<a href="{{ path('account_register') }}" class="btn btn-success" >S'inscrir</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+				<div class="subscibe-col">
+					<div class="img">
+						<img src="/img/about-vision.jpg" alt="" class="img-fluid">
+						<div class="icon">
+							<ion-icon name="person-outline" size="large"></ion-icon>
+						</div>
+					</div>
+					<h2 class="title">
+						<a href="{{ path('account_register') }}">Client</a>
+					</h2>
+					<p class="description">
+						c’est la personne qui nous confie ses intérêts, et qui a pris la décision de bénéficier des services de ALLO7RAYFI,
+                 		de façon occasionnelle ou habituelle
+					</p>
+					<div class="text-center">
+						<a href="{{ path('account_register') }}" class="btn btn-primary" >S'inscrir</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End About Us Section -->
+	
+<!-- ======= Services Section ( hadi anradoha best hrayfiya ratings)======= -->
+        <!-- =======  Les Artisans du mois ======= -->
+        <header class="section-header">
+          <h3>Les Artisans du mois</h3>
+        </header>
+        <div class="row subscibe-cols">
+
+          <div class="col-md-4 wow fadeInUp">
+            <div class="subscibe-col">
+              <div class="img">
+                <img src="img/profils/profile-star-2.jpg" alt="" class="img-fluid">
+                <div class="star"><ion-icon name="star" size="large" style="color: yellow;"></ion-icon></div>
+              </div>
+              <h2 class="title"><a href="#">Nadia idrissi</a></h2>
+              <div class="text-center">
+                <button type="button" class="btn btn-primary">Voir le profil</button>
+                <button class="btn btn-primary" type="button"  onclick="myFunction()">Contacter
+                  <span class="popuptext" id="myPopup1">+21260242425</span>
+                </button>
+              </div>
+            </div>
+        
+          </div>
+          <div class="col-md-4 wow fadeInUp">
+            <div class="subscibe-col">
+              <div class="img">
+                <img src="img/profils/profile-star-1.jpg" alt="" class="img-fluid">
+                <div class="star"><ion-icon name="star" size="large" style="color: yellow;"></ion-icon></div>
+              </div>
+              <h2 class="title"><a href="#">Amine el yakkoubi</a></h2>
+  
+              <div class="text-center">
+                <button type="button" class="btn btn-primary">Voir le profil</button>
+                <button class="btn btn-primary" type="button"  onclick="myFunction1()">Contacter
+                  <span class="popuptext" id="myPopup2">+21260535355</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
+            <div class="subscibe-col">
+              <div class="img">
+                <img src="img/profils/profile-star-3.jpg" alt="" class="img-fluid">
+                <div class="star"><ion-icon name="star" size="large" style="color: yellow;"></ion-icon></div>
+              </div>
+              <h2 class="title"><a href="#">Ahmed gassmi</a></h2>
+              <div class="text-center">
+                <button type="button" class="btn btn-primary">Voir le profil</button>
+                <button class="btn btn-primary" type="button"  onclick="myFunction2()">Contacter
+                  <span class="popuptext" id="myPopup3">+212604002662</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </section><!-- End About Us Section -->
+
+	
+
+	<!-- ======= ADS Section Annonces Stars ======= -->
+<section id="ad" class="section-bg">
+  <div class="container">
+
+    <header class="section-header">
+      <h3 class="section-title">Annonces Stars<ion-icon name="star" size="x-large" style="color: darkgray;"></ion-icon></h3>
+    </header>
+    <div class="row ad-container">
+      <div class="col-lg-4 col-md-6 ad-item filter-web wow fadeInUp" data-wow-delay="0.1s">
+        <div class="ad-wrap">
+          
+          <figure>
+            <img src="img/ad-gallery/anoonce-1.jpg" class="img-fluid" alt="">
+            <a href="img/ad-gallery/anoonce-1.jpg" class="link-preview venobox" data-gall="ad-gallery" title="Charpentier bois"><i class="ion ion-eye"></i></a>
+            <a href="#" class="link-details" title="voir l'annonce"><i class="ion ion-android-open"></i></a>
+          </figure>
+
+          <div class="ad-info">
+            <h4><a href="#">Charpentier bois</a></h4>
+            <p> assemblage de charpente bois sur des chantiers</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 ad-item filter-app wow fadeInUp" data-wow-delay="0.2s">
+        <div class="ad-wrap">
+          <figure>
+            <img src="img/ad-gallery/annonce-2.jpg" class="img-fluid" alt="">
+            <a href="img/ad-gallery/annonce-2.jpg" class="link-preview venobox" data-gall="ad-gallery" title="Couture"><i class="ion ion-eye"></i></a>
+            <a href="#" class="link-details" title="voir l'annonce"><i class="ion ion-android-open"></i></a>
+          </figure>
+
+          <div class="ad-info">
+            <h4><a href="#">Couture</a></h4>
+            <p>Je suis modéliste vêtement femme , j’exerce le métier de couturière depuis 11 ans.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 ad-item filter-card wow fadeInUp">
+        <div class="ad-wrap">
+          <figure>
+            <img src="img/ad-gallery/annonce-3.jpg" class="img-fluid" alt="">
+            <a href="img/ad-gallery/annonce-3.jpg" class="link-preview venobox" data-gall="ad-gallery" title="Plombier"><i class="ion ion-eye"></i></a>
+            <a href="#" class="link-details" title="voir l'annonce"><i class="ion ion-android-open"></i></a>
+          </figure>
+
+          <div class="ad-info">
+            <h4><a href="#">Plombier</a></h4>
+            <p>Plombier de confiance en service de plomberie d’urgence 24 heures dans la région de Casablanca!</p>
+          </div>
+        </div>
+      </div>
+  </div>
+</section><!-- End ad Section -->
+
+
+
+<!-- ======= Facts Section (numbers and statistics) ======= -->
+<section id="facts" class="wow fadeIn">
+	<div class="container">
+
+		<header class="section-header">
+			<h3>Notre affaire</h3>
+			<p>Nous nous soucions des détails dans tous nos travaux</p>
+		</header>
+
+		<div class="row counters">
+
+			<div class="col-lg-3 col-6 text-center">
+				<span data-toggle="counter-up">{{ stats.users }}</span>
+				<p>Artisans</p>
+			</div>
+
+			<div class="col-lg-3 col-6 text-center">
+				<span data-toggle="counter-up">{{ stats.achats }}</span>
+				<p>Commandes</p>
+			</div>
+
+			<div class="col-lg-3 col-6 text-center">
+				<span data-toggle="counter-up">{{ stats.annonces }}</span>
+				<p>Annonces</p>
+			</div>
+
+			<div class="col-lg-3 col-6 text-center">
+				<span data-toggle="counter-up">{{ stats.users }}</span>
+				<p>Clients</p>
+			</div>
+
+		</div>
+
+	</div>
+</section>
+<!-- End Facts Section -->
+	
+<!-- ======= Our Clients Section ( sponsors ) ======= -->
+<section id="clients" class="wow fadeInUp">
+	<div class="container">
+
+		<header class="section-header">
+			<h3>Nos sponsors</h3>
+		</header>
+
+		<div class="owl-carousel clients-carousel">
+			<img src="/img/clients/client-1.png" alt=""> 
+			<img src="/img/clients/client-2.png" alt=""> 
+			<img src="/img/clients/client-3.png" alt=""> 
+			<img src="/img/clients/client-4.png" alt=""> 
+			<img src="/img/clients/client-5.png" alt=""> 
+			<img src="/img/clients/client-6.png" alt=""> 
+			<img src="/img/clients/client-7.png" alt=""> 
+			<img src="/img/clients/client-8.png" alt="">
+		</div>
+
+	</div>
+</section>
+
+<!-- End Our Clients Section -->
+	
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="section-bg wow fadeInUp">
+	<div class="container">
+
+		<div class="section-header">
+			<h3>Contactez nous</h3>
+			<p>Faites le premier pas et le reste sur nous</p>
+		</div>
+
+		<div class="row contact-info">
+
+			<div class="col-md-4">
+				<div class="contact-address">
+					<i class="ion-ios-location-outline"></i>
+					<h3>Adresse postale</h3>
+					<address>Rabat agdal , LTD 10006, MA</address>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="contact-phone">
+					<i class="ion-ios-telephone-outline"></i>
+					<h3>Téléphone</h3>
+					<p>
+						<a href="tel:+155895548855">+212 566 5665 43</a>
+					</p>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="contact-email">
+					<i class="ion-ios-email-outline"></i>
+					<h3>Adresse E-mail</h3>
+					<p>
+						<a href="mailto:info@example.com">Allo7rayfi@gmail.com</a>
+					</p>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="form">
+			<form action="forms/contact.php" method="post" role="form"
+				class="php-email-form">
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<input type="text" name="name" class="form-control" id="name"
+							placeholder="Votre nom complet" data-rule="minlen:4"
+							data-msg="Le nom doit faire au moins 4 caractères" required/>
+						<div class="validate"></div>
+					</div>
+					<div class="form-group col-md-6">
+						<input type="email" class="form-control" name="email" id="email"
+							placeholder="Votre adresse email" data-rule="email"
+							data-msg="Entrez une adresse email valide exemple@exemple.com" required/>
+						<div class="validate"></div>
+					</div>
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" name="subject" id="subject"
+						placeholder="Sujet" data-rule="minlen:4"
+						data-msg="Le sujet doit faire au moins 4 caractères" required/>
+					<div class="validate"></div>
+				</div>
+				<div class="form-group">
+					<textarea class="form-control" name="message" rows="5"
+						data-rule="required" data-msg="Vous devez tapez votre message avant d'envoyer"
+						placeholder="Tapez votre message ici..." required></textarea>
+					<div class="validate"></div>
+				</div>
+				<div class="mb-3">
+					<div class="loading">Envoi en cours</div>
+					<div class="error-message"></div>
+					<div class="sent-message">Votre message a été envoyer avec success, merci.</div>
+				</div>
+				<div class="text-center">
+					<button type="submit">Envoyer</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>
+<!-- End Contact Section -->
+</main>
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+	<div class="footer-top">
+		<div class="container">
+			<div class="row">
+			
+				<div class="col-lg-3 col-md-6 footer-links">
+					<ul>
+						<li><i class="ion-ios-arrow-right"> <a href="{{ path('homepage') }}">Accueil</a></i>
+						<li><i class="ion-ios-arrow-right"> <a href="{{ path('account_register') }}">Inscription</a></i>
+						<li><i class="ion-ios-arrow-right"> <a href="#">services</a></i>
+						<li><i class="ion-ios-arrow-right"> <a href="#">nos sponsors</a></i>					
+					</ul>
+				</div>
+
+				<div class="col-lg-3 col-md-6 footer-contact">
+					<h4>Suivez-nous sur les réseaux sociaux</h4>
+					<div class="social-links">
+						<a href="https://twitter.com/allo7rayfi"class="twitter">
+							<i class="fa fa-twitter"></i>
+						</a>
+						<a href="https://facebook.com/allo7rayfi" class="facebook">
+							<i class="fa fa-facebook"></i>
+						</a>
+						<a href="https://www.instagram.com/allo7rayfi/" class="instagram">
+							<i class="fa fa-instagram"></i>
+						</a>
+						<a href="#" class="google-plus">
+							<i class="fa fa-google-plus"></i>
+						</a>
+						<a href="#"	class="linkedin">
+							<i class="fa fa-linkedin"></i>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-6 footer-newsletter">
+					<h4>Politique de confidentialité</h4>
+					<p>لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي</p>
+					<a href="#">Allo7rayfi Page de confidentialité</a>
+				</div>
+				
+				<div class="footer-info">
+					<a href="{{ path('homepage') }}"><img src="/img/Logo.png" alt=""></a>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="copyright">
+			&copy; Copyright <strong>Allo7rayfi.ma</strong> 2020. Tous les droits sont réservés
+		</div>
+		<div class="credits">
+			<a href="{{ path('homepage') }}">Allo7rayfi.ma</a>
+		</div>
+	</div>
+</footer>
+<!-- End Footer -->
+
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+<script>
+    function myFunction() {
+    var popup = document.getElementById("myPopup1");
+    popup.classList.toggle("show");
+    };
+
+    function myFunction1() {
+    var popup1 = document.getElementById("myPopup2");
+    popup1.classList.toggle("show");
+    };
+
+    function myFunction2() {
+    var popup2 = document.getElementById("myPopup3");
+    popup2.classList.toggle("show");
+    };
+</script>
+	
+	 <!-- Vendor JS Files -->
+	
+	  <script src="/build/jquery/jquery.min.js"></script>
+	  <script src="/build/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="/build/jquery.easing/jquery.easing.min.js"></script>
+      <script src="/build/php-email-form/validate.js"></script>
+      <script src="/build/wow/wow.min.js"></script>
+      <script src="/build/waypoints/jquery.waypoints.min.js"></script>
+      <script src="/build/counterup/counterup.min.js"></script>
+      <script src="/build/isotope-layout/isotope.pkgd.min.js"></script>
+      <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+      <script src="/build/venobox/venobox.min.js"></script>
+      <script src="/build/owl.carousel/owl.carousel.min.js"></script>
+      <script src="/build/superfish/superfish.min.js"></script>
+      <script src="/build/hoverIntent/hoverIntent.js"></script>
+      <script src="/build/jquery-touchswipe/jquery.touchSwipe.min.js"></script>
+      
+     <!-- Template Main JS File -->
+  	  <script src="/build/js/main.js"></script>
+
+</body>

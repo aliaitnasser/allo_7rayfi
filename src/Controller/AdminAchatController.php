@@ -50,7 +50,7 @@ class AdminAchatController extends AbstractController
             
             $this->addFlash(
                 'success',
-                "La commande n° <strong>{$achat->getId()}</strong> a bien été modifiée"
+                "La commande nÂ° <strong>{$achat->getId()}</strong> a bien Ã©tÃ© modifiÃ©e"
             );
             
             return $this->redirectToRoute('admin_achats_index');         
@@ -78,7 +78,7 @@ class AdminAchatController extends AbstractController
         
         $this->addFlash(
             'success',
-            "La commande a bien été suprimée !"
+            "La commande a bien Ã©tÃ© suprimÃ©e !"
         );
         
         return $this->redirectToRoute('admin_achats_index');

@@ -49,7 +49,7 @@ class AdminAnnonceController extends AbstractController
             
           $this->addFlash(
               'success', 
-              "l'annonce <strong>{$annonce->getTitle()}</strong> a bien été modifier"
+              "l'annonce <strong>{$annonce->getTitle()}</strong> a bien Ã©tÃ© modifier"
               );
         };
         
@@ -70,13 +70,13 @@ class AdminAnnonceController extends AbstractController
         
         $manager = $this->getDoctrine()->getManager();
         
-        //verifier si l'annonce a été commander par un utilisateur
+        //verifier si l'annonce a Ã©tÃ© commander par un utilisateur
         
         if(count($annonce->getAchats()) > 0){
             $this->addFlash(
                 'warning',
                 "Vous ne pouvez pas supprimer l'annonce <strong>{$annonce->getTitle()}</strong> 
-                    car elle est déja commander pas des utilisateurs"
+                    car elle est dÃ©ja commander pas des utilisateurs"
                 );
         }else{
             
@@ -85,7 +85,7 @@ class AdminAnnonceController extends AbstractController
             
             $this->addFlash(
                 'success',
-                "l'annonce <strong>{$annonce->getTitle()}</strong> a bien été supprimée"
+                "l'annonce <strong>{$annonce->getTitle()}</strong> a bien Ã©tÃ© supprimÃ©e"
             );
         }
         

@@ -47,7 +47,7 @@ class Achat
     
     /**
      * Callback appeler a chaque reservation
-     * permet d'initialisé le date de creation et le montant
+     * permet d'initialiser le date de creation et le montant
      * 
      * @ORM\PrePersist
      * @ORM\PreUpdate
@@ -58,7 +58,7 @@ class Achat
         }
         
         if(empty($this->amount)){
-            //prix de l'annonce * quantité         
+            //prix de l'annonce * quantitÃ©         
             $this->amount = $this->annonce->getPrice() * $this->quantity;
         }
     }

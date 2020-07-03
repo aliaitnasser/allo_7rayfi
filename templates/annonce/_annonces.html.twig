@@ -1,25 +1,19 @@
+
 {% set url =  path('annonces_show', {'slug': annonce.slug}) %}
 
 <div class="col-md-4">
 	<div class="card bg-light mb-3">
 		<div class="card-header text-center">
-			<a href="{{ url }}"> {{ annonce.title }}
-			</a> 
+			<a href="{{ url }}"> {{ annonce.title }}</a> 
 			<br> 
-			
 			{% if annonce.comments|length > 0 %}
-			
 				<small>
 					{% include 'partials/rating.html.twig' with {'rating' : annonce.avgRatings} %}<br>
 					{{ annonce.comments | length }} Avis
 				</small>
-				
-			{% else %}
-			
-				<small>Pas encore noté</small>
-				
+			{% else %}	
+				<small>Pas encore notÃ©</small>
 			{% endif %}
-			
 		</div>
 		<a href="{{ url }}"> 
 		<img alt="image de l'artisan" src="{{ annonce.coverImage }}" style="height: 200px; width: 100%; display: block">
@@ -35,9 +29,9 @@
 			{% if app.user and app.user == annonce.author %}
 				<a href="{{ path('annonces_edit' , {'slug': annonce.slug}) }}" class="btn btn-secondary mb-2">Modifier l'annonce</a>
 		   		<a href="{{ path('annonces_delete', {'slug': annonce.slug}) }}" class="btn btn-danger" 
-				onclick="return confirm(`Êtes vous sur de vouloir supprimer l'annonce ?`)">Supprimer l'annonce</a>
+				onclick="return confirm(`Ã©tes vous sur de vouloir supprimer l'annonce ?`)">Supprimer l'annonce</a>
 		    {% else %}
-				<a href="{{ url }}" class="btn btn-primary float-right">Voir plus !</a>
+				<a href="{{ url }}" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Voir plus</a>
 		    {% endif %}			
 		</div>
 	</div>

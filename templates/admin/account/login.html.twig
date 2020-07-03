@@ -32,7 +32,7 @@
 	<div class="col-md-4">
     	<div class="card bg-light">
     		<div class="card-header">
-    			<h4 class="card-title"><i class="fas fa-lock"></i> Connextion a l'administration</h4>
+    			<h4 class="card-title"><i class="fas fa-lock"></i> Connexion a l'administration</h4>
     		</div>
     		<div class="card-body">
     			{% if hasError %}
@@ -42,15 +42,15 @@
     			{% endif %}
     			<form method="post">
     				<div class="form-group">
-    					<label for="_username">E-mail :</label>
-    					<input type="text" class="form-control" name="_username" placeholder="Adresse Email...">
+    					<label for="_username"><i class="fas fa-at"></i> E-mail :</label>
+    					<input type="text" class="form-control" name="_username" placeholder="Tapez votre adresse Email...">
     				</div>
     				<div class="form-group">
-    					<label for="_password">Mot de passe :</label>
+    					<label for="_password"><i class="fas fa-unlock-alt"></i> Mot de passe :</label>
     					<input type="password" class="form-control" name="_password" placeholder="Tapez votre mot de passe...">
     				</div>
     				<div class="form-group">
-    					<button type="submit" class="btn btn-primary mr-5"><i class="fas fa-lock-open"></i> Connextion</button>
+    					<button type="submit" class="btn btn-primary mr-5"><i class="fas fa-lock-open"></i> Connexion</button>
     					<a href="{{ path('homepage') }}"><i class="fas fa-arrow-circle-left"></i> Retour au site</a>
     				</div>
     			</form>

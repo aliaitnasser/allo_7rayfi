@@ -4,7 +4,7 @@
 
 {% block body %}
 <div class="container">
-	<h1 class="my-5">Mes commandes :</h1>
+	<h1 class="my-5"><i class="fas fa-folder-open"></i> Mes commandes :</h1>
 	<div class="alert alert-info">
 		<p>Retrouvez ci-dessous vos commandes :</p>
 	</div>
@@ -18,9 +18,9 @@
                 {% set comment = achat.annonce.commentFromAuthor(app.user) %}
 				
 				{% if comment is not null %}
-					<strong>Note donnée :</strong> {% include 'partials/rating.html.twig' with {'rating' : comment.rating} %}
+					<strong>Note donnÃ©e :</strong> {% include 'partials/rating.html.twig' with {'rating' : comment.rating} %}
 				{% else %}
-					Vous n'avez pas encore donné de note.<br>
+					Vous n'avez pas encore donner de note.<br>
 					<a href="{{ path('achat_show', {'id': achat.id} ) }}#comment">Je donne mon avis !</a>
 				
 				{% endif %}
@@ -29,7 +29,7 @@
 		<div class="col-md-9">
 			<h4>{{ achat.annonce.title }}</h4>
 			<p>
-			Commande N° : <strong>{{ achat.id }}</strong><br>
+			Commande NÂ° : <strong>{{ achat.id }}</strong><br>
 			Commander le : {{ achat.createdAt | date('d/m/Y') }} <br>
 			Prix : {{ achat.amount }} DH
 			</p>

@@ -79,7 +79,7 @@ class AchatController extends AbstractController
             
             $this->addFlash(
                 'success',
-                "Votre commentaire a bien été publier !"
+                "Votre commentaire a bien Ã©tÃ© publier !"
                 );
         }
         

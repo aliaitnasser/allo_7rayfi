@@ -10,7 +10,7 @@
 	<div class="row">
 		<div class="col">
 			<div class="alert alert-light">
-				<h2 class="alert-heading"><i class="fas fa-info-circle"></i> Informations générales :</h2>
+				<h2 class="alert-heading"><i class="fas fa-info-circle"></i> Informations gÃ©nÃ©rales :</h2>
     			<hr>
     			{{ form_row(form.firstName) }}
     			{{ form_row(form.lastName) }}
@@ -20,14 +20,16 @@
 		</div>
 		<div class="col">
 			<div class="alert alert-light">
-				<h2 class="alert-heading"><i class="fas fa-file-alt"></i> Détails :</h2>
+				<h2 class="alert-heading"><i class="fas fa-file-alt"></i> DÃ©tails :</h2>
     			<hr>
     			{{ form_row(form.phone) }}
     			{{ form_row(form.address) }}
+    			{{ form_row(form.city) }}
+    			{{ form_row(form.job) }}
     			{{ form_row(form.introduction) }}
     			{{ form_row(form.picture) }}
     			<hr>
-    			<p>Vous avez terminé vos modification ? Vous pouvez les sauvgarder !</p>
+    			<p>Vous avez terminÃ© vos modification ? Vous pouvez les sauvgarder !</p>
     			<button type="submit" class="btn btn-primary"><i class="far fa-check-circle"></i> Enregistrer les modifications </button>		
 			</div>	
 		</div>

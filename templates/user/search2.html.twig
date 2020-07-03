@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Allo7rayfi.ma</title>
+  <meta content="" name="Recherche">
+  <meta content="" name="Recherche">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+  <!-- VCSS BOOTSTRAP -->
+  <link href="/build/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/build/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/build/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="/build/animate.css/animate.min.css" rel="stylesheet">
+  <link href="/build/venobox/venobox.css" rel="stylesheet">
+  <link href="/build/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+  <!-- css -->
+  <link href="/build/css/main.css" rel="stylesheet">
+  <link href="/build/css/style.css" rel="stylesheet">
+  <link href="/build/css/app.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ======= NOTE ALLO7RAYFIYA TEAM ======= -->
+  <header id="headerr">
+    <div class="container-fluid">
+
+      <div id="logo" class="pull-left">
+        <a href="{{ path('homepage') }}"><img src="/img/Logo.png" alt=""></a>
+      </div>
+
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+          
+                <li class="menu-active"><a href="{{ path('homepage') }}">Accueil</a></li>
+                <li><a href="{{ path('annonces_index') }}">annonces</a></li>
+                {% if app.user %}
+                    <li><a href="{{ path('my_account') }}">mon profile</a></li>
+                    <li><a href="{{ path('account_achats') }}">mes commandes</a></li>
+                    <li><a href="{{ path('account_logout') }}">déconnexion</a></li>
+                {% else %}
+                    <li><a href="{{ path('account_logout') }}">se connecter</a></li>
+                    <li><a href="{{ path('account_register') }}">inscrivez-vous</a></li>
+                    <li><a href="#services">Nos services</a></li>
+                    <li><a href="#clients">Nos collaborateurs </a></li>
+                    <li><a href="#contact">Contactez nous</a></li>
+                {% endif %}
+
+            </ul>
+        </nav>
+      <!-- #nav-menu-container -->
+    </div>
+  </header><!-- End Header -->
+
+  
+  <main id="main">
+    <!-- ======= Facts Section (numbers and statistics) ======= -->
+    <section id="facts" class="wow fadeIn">
+      <div class="container">
+
+        <header class="section-header">
+          <h3>Vous recherchez un 7rayfi.</h3>
+          <p>De quel service avez-vous besoin ?</p>
+        </header>
+
+        <div class="search">
+          {{ form_start(form) }}
+            <div class="inner-form">
+              <div class="input-field first-wrap">
+
+                      {{ form_row(form.city) }}
+
+              </div>
+              <div class="input-field second-wrap">
+
+                      {{ form_row(form.job)}}
+
+              </div>
+              <div class="input-field third-wrap">
+                <button class="btn-search" type="submit">Recherche</button>
+              </div>
+            </div>
+          {{ form_end(form) }}
+        </div>
+
+        {% if app.request.method == 'POST'%}
+        <div>
+        {% if userSearch | length == 0 %}
+          <h1 class="my-5" style="color:white">Aucun résultat trouvé</h1>
+        {% else %}
+          <h1 class="my-5" style="color:white">{{ userSearch | length }} Résultat(s) trouvé(s)</h1><hr>
+            <div class="row subscibe-cols">
+            {% for user in userSearch %}
+              <div class="col-md-4 wow fadeInUp">
+                <div class="subscibe-col">
+                  <div class="img">
+                      <img src="{{ user.picture }}" alt="" class="img-fluid">
+                  </div>
+                  <h2 class="title"><a href="{{ path('user_show',{'slug': user.slug}) }}">{{ user.fullName }}</a></h2>
+                  <div class="text-center">
+                        {{ user.job }} - {{ user.city }}
+           				      <hr>
+                        <a class="btn btn-primary" href="{{ path('user_show',{'slug': user.slug}) }}" >Voir le profil</a>
+                      <button class="btn btn-primary" type="button"  onclick="myFunction()">Contacter
+                        <span class="popuptext" id="myPopup1">{{ user.phone }}</span>
+                      </button>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+            </div>	
+        {% endif %}
+        </div>
+        {% endif %}
+
+        <div class="row counters">
+          <div class="col-lg-4 col-6 text-center">
+            <span data-toggle="counter-up">{{ stats.users }}</span>
+            <p>Utilisateurs</p>
+          </div>
+
+          <div class="col-lg-4 col-6 text-center">
+            <span data-toggle="counter-up">{{ stats.annonces }}</span>
+            <p>Projets</p>
+          </div>
+
+          <div class="col-lg-4 col-6 text-center">
+            <span data-toggle="counter-up">{{ stats.achats }}</span>
+            <p>Services</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Facts Section -->
+    
+    
+  </main><!-- End #main -->
+  
+   <!-- ======= Footer ======= -->
+<footer id="footer">
+	<div class="footer-top">
+		<div class="container">
+			<div class="row">
+			
+				<div class="col-lg-3 col-md-6 footer-links">
+					<ul>
+						<li><i class="ion-ios-arrow-right"> <a href="{{ path('homepage') }}">Accueil</a></i>
+						<li><i class="ion-ios-arrow-right"> <a href="{{ path('account_register') }}">Inscription</a></i>
+						<li><i class="ion-ios-arrow-right"> <a href="#">services</a></i>
+						<li><i class="ion-ios-arrow-right"> <a href="#">nos sponsors</a></i>					
+					</ul>
+				</div>
+
+				<div class="col-lg-3 col-md-6 footer-contact">
+					<h4>Suivez-nous sur les réseaux sociaux</h4>
+					<div class="social-links">
+						<a href="https://twitter.com/allo7rayfi"class="twitter">
+							<i class="fa fa-twitter"></i>
+						</a>
+						<a href="https://facebook.com/allo7rayfi" class="facebook">
+							<i class="fa fa-facebook"></i>
+						</a>
+						<a href="https://www.instagram.com/allo7rayfi/" class="instagram">
+							<i class="fa fa-instagram"></i>
+						</a>
+						<a href="#" class="google-plus">
+							<i class="fa fa-google-plus"></i>
+						</a>
+						<a href="#"	class="linkedin">
+							<i class="fa fa-linkedin"></i>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-6 footer-newsletter">
+					<h4>Politique de confidentialité</h4>
+					<p>Vous avez la possibilité d'accepter ou de refuser la collecte et l'utilisation de
+                     vos Données Personnelles dans le but susmentionné en paramétrant vos préférences 
+                     de confidentialité sur le tableau de bord de confidentialité accessible via 
+                     id.allo7rayfi.com</p>
+					<a href="#">Allo7rayfi Page de confidentialité</a>
+				</div>
+				
+				<div class="footer-info">
+					<a href="{{ path('homepage') }}"><img src="/img/Logo.png" alt=""></a>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="copyright">
+			&copy; Copyright <strong>Allo7rayfi.ma</strong> 2020. Tous les droits sont réservés
+		</div>
+		<div class="credits">
+			<a href="{{ path('homepage') }}">Allo7rayfi.ma</a>
+		</div>
+	</div>
+</footer>
+<!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+  <script>
+
+    function myFunction() {
+    var popup = document.getElementById("myPopup1");
+    popup.classList.toggle("show");
+    };
+
+</script>
+  
+  <!-- Vendor JS Files -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <script src="/build/jquery/jquery.min.js"></script>
+  <script src="/build/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/build/jquery.easing/jquery.easing.min.js"></script>
+  <script src="/build/php-email-form/validate.js"></script>
+  <script src="/build/wow/wow.min.js"></script>
+  <script src="/build/waypoints/jquery.waypoints.min.js"></script>
+  <script src="/build/counterup/counterup.min.js"></script>
+  <script src="/build/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+  <script src="/build/venobox/venobox.min.js"></script>
+  <script src="/build/owl.carousel/owl.carousel.min.js"></script>
+  <script src="/build/superfish/superfish.min.js"></script>
+  <script src="/build/hoverIntent/hoverIntent.js"></script>
+  <script src="/build/jquery-touchswipe/jquery.touchSwipe.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/build/js/main.js"></script>
+
+</body>
+
+</html>

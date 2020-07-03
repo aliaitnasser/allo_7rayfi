@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rechercher un utilisateur{% endblock %}
+
+{% block body %}
+<div class="container">
+	<h1 class="my-5">Selectionner la ville : </h1>
+	{{ form_start(form) }}
+	<div class="row bg-light">
+            <div class="col">
+            	{{ form_row(form.city) }}
+            </div>
+           	<div class="col">
+           		{{ form_row(form.job) }}
+            </div>
+            <button type="submit" class="btn btn-primary ml-3"><i class="fas fa-search"></i> Rechercher</button> 	
+	</div>
+	{{ form_end(form) }}
+	
+	{% if app.request.method == 'POST'%}
+	<div>
+		{% if userSearch | length == 0 %}
+			<h1>aucun resultat pour votre recherche</h1>
+		{% else %}
+			<h1 class="my-5">{{ userSearch | length }} Résultat(s) trouvé(s)</h1><hr>
+        <div class="row">
+        {% for user in userSearch %}
+        	<div class="col-md-4">
+           		<div class="card border-secondary mb-3">
+           			<div class="card-body">
+           				<h4 class="card-title">{{ user.fullName }}</h4>
+                        {{ user.job }} - {{ user.city }}
+           				<hr>
+           				<div class="card-text">
+           					<img src="{{ user.picture }}" alt="avatar du user" class="avatar avatar-medium float-left mr-3">
+           					<p>{{ user.introduction }}</p>
+            				<a href="{{ path('user_show',{'slug': user.slug}) }}" class="btn btn-success float-right">Voir le profile :</a>
+							<div>
+								<strong>Téléphone :</strong> <br>
+								<span class="popuptext" id="myPopup">{{ user.phone }}</span>
+							</div>
+            			</div>
+            		</div>
+            	</div>
+       		</div>
+       	 {% endfor %}
+        </div>	
+     {% endif %}
+     </div>
+     {% endif %}
+</div>
+{% endblock %}
+
+
+

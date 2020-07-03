@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Commande N°{{ achat.id }}{% endblock %}
+{% block title %}Commande Nï¿½{{ achat.id }}{% endblock %}
 
 {% block body %}
 
@@ -8,25 +8,25 @@
 {% set author = annonce.author %}
 <div class="container">
 
-	<h1 class="my-5">Commande numéro ({{ achat.id }})</h1>
+	<h1 class="my-5">Commande numÃ©ro ({{ achat.id }})</h1>
 	
 	{% if app.request.query.get('withAlert') %}
 	<div class="alert alert-success">
 		<h4 >Bravo !</h4>
-		<p>Votre commende a bien été prise en compte !</p>
+		<p>Votre commende a bien Ã©tÃ© prise en compte !</p>
 	</div>
 	{% endif %}
 	
 	<div class="row">
 		<div class="col">
 			<div class="alert alert-dismissible alert-light">
-				<h2>Détails du commande :</h2>
+				<h2>DÃ©tails du commande :</h2>
 				<dl class="row">
-					<dt class="col-md-4">Numéro</dt>
+					<dt class="col-md-4">NumÃ©ro</dt>
 					<dd class="col-md-8">{{ achat.id }}</dd>
 					<dt class="col-md-4">Date</dt>
 					<dd class="col-md-8">{{ achat.createdAt | date('d/m/Y') }}</dd>
-					<dt class="col-md-4">Quantité </dt>
+					<dt class="col-md-4">QuantitÃ© </dt>
 					<dd class="col-md-8">{{ achat.quantity }}</dd>
 					<dt class="col-md-4">Mantant total</dt>
 					<dd class="col-md-8">{{ achat.amount }} DH</dd>

@@ -6,8 +6,8 @@
 <div class="container">
 	<h1>Passez votre Commande :</h1>
 	
-	<p>Vous êtes sur le point de commander l'annonce de <strong>{{ annonce.author.fullName }}</strong>
-	, selectionnez la quantité et on s'occupe du reste !</p>
+	<p>Vous Ã©tes sur le point de commander l'annonce de <strong>{{ annonce.author.fullName }}</strong>
+	, selectionnez la quantitÃ© et on s'occupe du reste !</p>
 	
 	<div class="alert alert-light">
 		<div class="row">
@@ -15,15 +15,15 @@
 			
 				{{ form_start(form) }}
 				
-				<h4 class="my-3"> Quantité :</h4>
+				<h4 class="my-3"> QuantitÃ© :</h4>
 				
         		{{ form_widget(form) }}
         			
-        		<h4 class="my-3">Montant de l'annonce : <span id="amount">...</span> DH</h4>
+        		<h4 class="my-3">Montant Ã  payer : <span id="amount">...</span> DH</h4>
         		
         		<span id = "quantity"> ... </span> Article(s)
         		
-        		<h4 class="my-3" style="color:black">Vous avez terminé !</h4>
+        		<h4 class="my-3" style="color:black">Vous avez terminÃ© !</h4>
         		
         		<button type="submit" class="btn btn-success">Commander !</button>
         		{{ form_end(form) }}
@@ -46,25 +46,18 @@
 
 {% block javascripts %}
 <script>
-
 	$(document).ready(function(){
 		
 		$('#achat_quantity').on('change', achatQuantity);
 		console.log('#achat_quantity');
 	})
-
-	function achatQuantity(){
-		
+	function achatQuantity(){	
 		const quantity = $('#achat_quantity').val();
-
-		if(quantity > 0){
-			
+		if(quantity > 0){	
 			const amount = quantity * {{ annonce.price }};
-
 			$('#amount').text(amount);
 			$('#quantity').text(quantity);
 		}
 	}
-	
 </script>
 {% endblock %}

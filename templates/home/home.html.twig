@@ -5,28 +5,33 @@
 {% block body %}
 	<div class="container">
 		<div class="jumbotron">
-      	  <h1 class="display-3">Bienvenue sur Allo 7rayfi !</h1>
-          <p class="lead">la premi�re plateforme pour les artisans au Maroc</p>
-          <hr class="my-4">
-          <p>Satisfait ou rembours�</p>
-          <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">En savoir plus</a>
-          </p>
+          	  <h1 class="display-3">Bienvenue sur Allo 7rayfi !</h1>
+              <p class="lead">لبلاصة لي كتجمع كل الحريفية ديال المغرب بزبناء ديالهم</p>
+              <hr class="my-4">
+              <p>Satisfait ou remboursé</p>
+              <p class="lead">
+                <a class="btn btn-primary btn-lg" href="{{ path('user_search') }}" role="button">
+                	<i class="fas fa-search"></i> Trouvez un artisan !
+                </a>
+              </p>
         </div>
         
-        <h2 class="my-5">Les Artisans du mois</h2>
+        <h2 class="my-5"><i class="fas fa-user-check"></i> Les Artisans du mois</h2>
         
         <div class="row">
         	{% for data in users %}
         	<div class="col">
-        		<div class="card border-secondary mb-3">
+        		<div class="card border-success mb-3">
         			<div class="card-body">
         				<h4 class="card-title">{{ data.user.fullName }}</h4>
+        				<p>Note :{% include 'partials/note.html.twig' with {'note': data.user.avgNotes}%}</p>
         				<hr>
         				<div class="card-text">
         					<img src="{{ data.user.picture }}" alt="avatar du user" class="avatar avatar-medium float-left mr-3">
         					<p>{{ data.user.introduction }}</p>
-        					<a href="{{ path('user_show',{'slug': data.user.slug}) }}" class="btn btn-success float-right">Voir le profile :</a>
+        					<a href="{{ path('user_show',{'slug': data.user.slug}) }}" class="btn btn-success float-right">
+        						<i class="fas fa-user"></i>  Voir le profile
+        					</a>
         				</div>
         			</div>
         		</div>
@@ -34,7 +39,7 @@
         	{% endfor %}
         </div>
         
-        <h2 class="my-5">Annonces Stars :</h2>
+        <h2 class="my-5"><i class="fas fa-bullhorn"></i> Annonces Stars</h2>
         
         <div class="row">
 			{% for data in annonces %}

@@ -11,9 +11,9 @@
 	<div class="collapse navbar-collapse" id="navbarColor03">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item"><a class="nav-link"
-				href="{{ path('homepage') }}">Accueil</a></li>
+				href="{{ path('homepage') }}"><i class="fas fa-home"></i> Accueil</a></li>
 			<li class="nav-item"><a class="nav-link"
-				href="{{ path('annonces_index') }}">Annonces</a></li>
+				href="{{ path('annonces_index') }}"><i class="fas fa-bullhorn"></i> Annonces</a></li>
 		</ul>
 		<ul class="navbar-nav ml-auto">
 			{% if app.user %}
@@ -22,20 +22,20 @@
 						<img alt="avatar de {{ app.user.fullName }}" class="avatar avatar-mini" src="{{ app.user.picture }}"> {{ app.user.fullName }}
 					</a>
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdownLink">
-						<a href="{{ path('annonces_create') }}" class="dropdown-item">Créer une annonce</a>
+						<a href="{{ path('annonces_create') }}" class="dropdown-item"><i class="fas fa-bullhorn"></i> CrÃ©er une annonce</a>
 						<div class="dropdown-divider"></div>
-						<a href="{{ path('my_account') }}" class="dropdown-item">Mon compte</a>
-						<a href="{{ path('account_achats') }}" class="dropdown-item">Mes commandes</a>
-						<a href="{{ path('account_edit') }}" class="dropdown-item">Modifier mon profile</a>
+						<a href="{{ path('my_account') }}" class="dropdown-item"><i class="fas fa-user-circle"></i> Mon compte</a>
+						<a href="{{ path('account_achats') }}" class="dropdown-item"><i class="fas fa-folder-open"></i> Mes commandes</a>
+						<a href="{{ path('account_edit') }}" class="dropdown-item"><i class="fas fa-user-edit"></i> Modifier mon profile</a>
 						<div class="dropdown-divider"></div>
-						<a href="{{ path('account_logout') }}" class="dropdown-item">Déconnexion</a>
+						<a href="{{ path('account_logout') }}" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> DÃ©connexion</a>
 					</div>
 				</li>
 			{% else %}
 				<li class="nav-item">
-					<a href="{{ path('account_register') }}" class="nav-link">Inscription</a>
+					<a href="{{ path('account_register') }}" class="nav-link"><i class="fas fa-user-plus"></i> Inscription</a>
 				</li><li class="nav-item">
-					<a href="{{ path('account_login') }}" class="nav-link">Connexion</a>
+					<a href="{{ path('account_login') }}" class="nav-link"><i class="fas fa-door-open"></i> Connexion</a>
 				</li>
 			{% endif %}
 		</ul>

@@ -16,7 +16,7 @@
 		{% if app.user and app.user == annonce.author %}
 			<a href="{{ path('annonces_edit' , {'slug': annonce.slug}) }}" class="btn btn-secondary">Modifier l'annonce</a>
 			<a href="{{ path('annonces_delete', {'slug': annonce.slug}) }}" class="btn btn-danger" 
-				onclick="return confirm(`Êtes vous sur de vouloir supprimer l'annonce ?`)">Supprimer l'annonce</a>
+				onclick="return confirm(`Ã©tes vous sur de vouloir supprimer l'annonce ?`)">Supprimer l'annonce</a>
 		{% else %}
 			<a href="{{ path('achat_create', {'slug': annonce.slug}) }}" class="btn btn-primary">Commander :</a>
 		{% endif %}	
@@ -70,18 +70,16 @@
 						</div>
 					</h4>
 				</div>
-				
-				{% for comment in annonce.comments %}
 				<h2 class="mb-3">Commentaires <i class="fas fa-comments"></i></h2>
+				{% for comment in annonce.comments %}
 					<div class="bg-light rounded mb-2 py-2 px-2">
 						<strong>{{ comment.author.firstNAme }} a dit :</strong> 
 						<blockquote>{{ comment.content }}</blockquote>
-						<strong>Note donnée : </strong>
-						
+						<strong>Note donnÃ©e : </strong>
+				
 						{% include 'partials/rating.html.twig' with {'rating' : comment.rating} %}
 						
-					</div>
-					
+					</div>	
 				{% endfor %}
 			{% else %}
 			
@@ -89,6 +87,7 @@
 				
 			{% endif %}
 		</div>
+		
 		<div class="col">
 		{% set a = annonce.author %}
 			<div class="row">

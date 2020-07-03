@@ -17,7 +17,7 @@ class AnnonceType extends ApplicationType
     {
         $builder
             ->add('title', TextType::class, $this->getConfig("Titre :", "Tapez le titre de votre annonce"))
-            ->add('introduction', TextareaType::class,$this->getConfig("Description :", "Tapez une déscription de votre annonce"))
+            ->add('introduction', TextareaType::class,$this->getConfig("Description :", "Tapez une dÃ©scription de votre annonce"))
             ->add('coverImage', TextType::class, $this->getConfig("Image de couverture :", "Url de votre image de couverture"))
             ->add('price', MoneyType::class, $this->getConfig("Prix :", "Tapez le prix"))
             ->add('images', CollectionType::class, [

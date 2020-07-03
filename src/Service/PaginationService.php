@@ -84,11 +84,11 @@ class PaginationService
         //1 calculer l'offset
         $offset = $this->currentPage * $this->limit - $this->limit;
         
-        //2 demander au repo de trouver les éléments
+        //2 demander au repo de trouver les Ã©lÃ©ments
         $repo = $this->manager->getRepository($this->entityClass);
         $data = $repo->findBy([], [], $this->limit, $offset);
         
-        //3 renvoyer les éléments
+        //3 renvoyer les Ã©lÃ©ments
         return $data;
     }
     

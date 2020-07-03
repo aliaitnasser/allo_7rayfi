@@ -1,0 +1,28 @@
+  <!-- ======= Header hrayfi arab revrse < ======= -->
+  <header id="header">
+    <div class="container-fluid">
+
+      <div id="logo" class="pull-left">
+        <a href="{{ path('homepage') }}"><img src="/img/Logo.png" alt=""></a>
+      </div>
+
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+          
+                <li><a href="{{ path('homepage') }}">Accueil</a></li>
+                <li><a href="{{ path('annonces_index') }}">Annonces</a></li>
+                {% if app.user %}
+                    <li><a href="{{ path('my_account') }}">Mon profile</a></li>
+                    <li><a href="{{ path('annonces_create') }}">Créer une annonce</a></li>
+                    <li><a href="{{ path('account_achats') }}">Mes commandes</a></li>
+                    <li><a href="{{ path('account_logout') }}">Déconnexion</a></li>
+                {% else %}
+                    <li><a href="{{ path('account_logout') }}">Se connecter</a></li>
+                    <li><a href="{{ path('account_register') }}">Inscrivez-vous</a></li>
+                {% endif %}
+
+            </ul>
+        </nav>
+      <!-- #nav-menu-container -->
+    </div>
+  </header><!-- End Header -->

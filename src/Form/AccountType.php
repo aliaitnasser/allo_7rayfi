@@ -17,7 +17,9 @@ class AccountType extends ApplicationType
             ->add('email')
             ->add('age')
             ->add('phone')
+            ->add('job')
             ->add('address')
+            ->add('city')
             ->add('picture')
             ->add('introduction')
         ;

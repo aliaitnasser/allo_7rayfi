@@ -5,37 +5,95 @@
 {% block body %}
 <div class="container">
 	<div class="row align-items-center mb-3">
-		<div class="col-3 text-center">
-			<img src="{{ user.picture }}" class="avatar mb-2" alt="avatar de {{ user.fullName }}">
-			<br>
-			<span class="badge badge-primary">{{ user.annonces | length }} Annonces</span>
-			<span class="badge badge-primary">5 starts</span>
+		<div class="col-4 text-center">
+			<img src="{{ user.picture }}" class="avatar mb-2" alt="avatar de {{ user.fullName }}"><br>
+			<strong>Présentation : </strong><br>
+			<p>{{ user.introduction }}</p>
 		</div>
-		<div class="col-9">
-			<h1>{{ user.fullName }}</h1>
+		<div class="col-8">
+			<h1><i class="fas fa-user-tie"></i> {{ user.fullName }}</h1>
+			<p><strong>Métier : </strong>{{ user.job }}<br>
+			<strong>Annonces : </strong>{{ user.annonces | length }}</p>
+			
+			{% if user.ratings | length > 0 %}
+			<div class="alert alert-info">
+				<h4 class="alert-heading text-center">
+					<div class="row align-items-center">
+						<div class="col">
+							Note globale donnée par nos clients		
+						</div>
+						<div class="col">
+							{% include 'partials/note.html.twig' with {'note': user.avgNotes}%}<br>
+							<small>Calculé sur {{ user.ratings | length }} avis</small>
+						</div>
+					</div>
+				</h4>
+			</div>
+			{% endif %}
+			
 			{% if user is same as(app.user) %}
 				<div class="mt-3">
-					<a href="{{ path('account_edit') }}" class="btn btn-primary mr-2 mb-2">Modifier mes informations</a>
-					<a href="{{ path('password_update') }}" class="btn btn-primary mb-2">Modifier mon mot de passe</a>
+					<a href="{{ path('account_edit') }}" class="btn btn-primary mr-2 mb-2"><i class="fas fa-user-edit"></i> Modifier mes informations</a>
+					<a href="{{ path('password_update') }}" class="btn btn-primary mb-2"><i class="fas fa-lock"></i> Modifier mon mot de passe</a>
 				</div>
 			{% endif %}
 		</div>
 	</div>
-	{{ user.introduction }}
 	<hr>
-	<h2 class="mb-3">Les annonces de {{ user.fullName }}</h2>
-	
+	<div class="row">
 	{% if user.annonces | length > 0 %}
-		<div class="row">
-			{% for annonce in user.annonces %}
-				{% include 'annonce/_annonces.html.twig' %}
-			{% endfor %}
-		</div>
+			<div class="col-md-8">
+			<h2 class="my-3"><i class="fas fa-bullhorn"></i> Les annonces de {{ user.fullName }}</h2>
+				{% for annonce in user.annonces %}
+				    {% include 'annonce/_annonces.html.twig' %}
+			    {% endfor %}
+			</div>
+		
 	{% else %}
-		<div class="alert alert-warning">
-			<p><strong>{{ user.fullName }}</strong> n'a pas encore d'annoces !</p>
-		</div>
+			<div class="col-md-8">
+				<div class="alert alert-warning">
+					<p><strong>{{ user.fullName }}</strong> n'a pas encore d'annoces !</p>
+				</div>
+			</div>
 	{% endif %}
+			<div class="col">
+			<h2 class="my-3"><i class="fas fa-comments"></i> Les commentaires :</h2>
+			<div class="alert alert-light">
+				{% set rating = user.ratingExist(app.user) %}
+				{% if rating is null %}
+					{% if user is same as(app.user) %}
+					
+					{% else %}
+					
+        				<h3>Votre avis :</h3>
+        				{{ form_start(form) }}
+        				{{ form_widget(form) }}
+        				<button type="submet" class="btn btn-success">Envoyer</button>
+        				{{ form_end(form) }}
+    				
+    				{% endif %}
+				{% endif %}
+			</div>
+			{% if user.ratings | length > 0 %}
+				{% for userNote in user.ratings %}
+					<div class="bg-light rounded mb-3 py-2 px-2">
+						<strong>{{ userNote.author.fullName }}</strong> a dit:
+						<blockquote>{{ userNote.comment }}<br>
+						<strong>Note : </strong>
+						    {% include 'partials/note.html.twig' with {'note': userNote.note}%}
+						</blockquote>
+					</div>
+				{% endfor %}
+			{% else %}
+				<div class="col">
+					<div class="alert alert-warning">
+						<p><strong>{{ user.fullName }}</strong> n'a pas encore de commentaires !</p>
+					</div>
+				</div>
+			{% endif %}
+			</div>
+		</div>	
+
 </div>
 
 {% endblock %}

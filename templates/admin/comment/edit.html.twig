@@ -5,13 +5,13 @@
 {% block body %}
 <div class="container">
 	
-	<h1 class="my-5"><i class="far fa-edit"></i> Modification du commentaire N° ({{ comment.id }})</h1>
+	<h1 class="my-5"><i class="far fa-edit"></i> Modification du commentaire NÂ° ({{ comment.id }})</h1>
 	<div class="alert alert-info">
-		<h3><i class="far fa-file-alt"></i> Détails :</h3>
-		<strong><i class="fas fa-bullhorn"></i> Annonce lié : </strong>{{ comment.annonce.title }}<br>
+		<h3><i class="far fa-file-alt"></i> DÃ©tails :</h3>
+		<strong><i class="fas fa-bullhorn"></i> Annonce liÃ© : </strong>{{ comment.annonce.title }}<br>
 		<strong><i class="fas fa-user"></i> Autheur : </strong>{{ comment.author.fullName }}<br>
-		<strong><i class="fas fa-calendar-alt"></i> Date de création : </strong>{{ comment.createdAt | date('d/m/Y H:i') }}<br>
-		<strong><i class="fas fa-star"></i> Note donnée : </strong>{{ comment.rating }}
+		<strong><i class="fas fa-calendar-alt"></i> Date de crÃ©ation : </strong>{{ comment.createdAt | date('d/m/Y H:i') }}<br>
+		<strong><i class="fas fa-star"></i> Note donnÃ©e : </strong>{{ comment.rating }}
 	</div>
 	
 	{{ form_start(form) }}

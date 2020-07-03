@@ -12,7 +12,13 @@ Encore
     // public path used by the web server to access the output path
     .setPublicPath('/build')
     // only needed for CDN's or sub-directory deploy
-    //.setManifestKeyPrefix('build/')
+    .setManifestKeyPrefix('build/')
+    
+    .cleanupOutputBeforeBuild()
+    
+    .enableSourceMaps(!Encore.isProduction())
+    
+    .enableVersioning(Encore.isProduction())
 
     /*
      * ENTRY CONFIG
@@ -23,8 +29,13 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
+    
     .addEntry('js/app', './assets/js/app.js')
+    .addEntry('js/annonce', './assets/js/annonce.js')
+    .addEntry('js/main', './assets/js/main.js')
+    
     .addStyleEntry('css/app', './assets/css/app.css')
+    
     //.addEntry('page2', './assets/js/page2.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
@@ -42,7 +53,7 @@ Encore
      * https://symfony.com/doc/current/frontend.html#adding-more-features
      */
     .cleanupOutputBeforeBuild()
-    .enableBuildNotifications()
+    //.enableBuildNotifications()
     .enableSourceMaps(!Encore.isProduction())
     // enables hashed filenames (e.g. app.abc123.css)
     .enableVersioning(Encore.isProduction())

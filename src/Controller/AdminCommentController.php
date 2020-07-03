@@ -53,7 +53,7 @@ class AdminCommentController extends AbstractController
             
             $this->addFlash(
                 'success', 
-                "Le commentaire numéro <strong>{$comment->getId()}</strong> a bien été modifée"
+                "Le commentaire numÃ©ro <strong>{$comment->getId()}</strong> a bien Ã©tÃ© modifÃ©e"
             );
         };
         
@@ -78,7 +78,7 @@ class AdminCommentController extends AbstractController
         
         $this->addFlash(
             'success',
-            "Le commentaire de <strong>{$comment->getAuthor()->getFullName()}</strong> a bien été supprimé"
+            "Le commentaire de <strong>{$comment->getAuthor()->getFullName()}</strong> a bien Ã©tÃ© supprimÃ©"
         );
         
         return $this->redirectToRoute('admin_comments_index');

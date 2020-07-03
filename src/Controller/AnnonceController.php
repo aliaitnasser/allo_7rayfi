@@ -62,7 +62,7 @@ class AnnonceController extends AbstractController
             
             $this->addFlash(
                 'success',
-                "L'annonce <strong>{$annonce->getTitle()}</strong> a bien été enregistrée !"
+                "L'annonce <strong>{$annonce->getTitle()}</strong> a bien Ã©tÃ© enregistrÃ©e !"
                 );
             
             return $this->redirectToRoute('annonces_show', [
@@ -102,7 +102,7 @@ class AnnonceController extends AbstractController
             
             $this->addFlash(
                 'success',
-                "L'annonce <strong>{$annonce->getTitle()}</strong> a bien été modifiée !"
+                "L'annonce <strong>{$annonce->getTitle()}</strong> a bien Ã©tÃ© modifiÃ©e !"
             );
             
             return $this->redirectToRoute('annonces_show', [
@@ -148,7 +148,7 @@ class AnnonceController extends AbstractController
         
         $this->addFlash(
             'success',
-            "L'annonce <strong>{$annonce->getTitle()}</strong> a bien été supprimer !"
+            "L'annonce <strong>{$annonce->getTitle()}</strong> a bien Ã©tÃ© supprimer !"
         );
         
         return $this->redirectToRoute('annonces_index');

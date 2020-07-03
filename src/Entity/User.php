@@ -125,6 +125,26 @@ class User implements UserInterface
     private $achats;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $city;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $job;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Rating", mappedBy="user", orphanRemoval=true)
+     */
+    private $ratings;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Rating", mappedBy="author", orphanRemoval=true)
+     */
+    private $no;
+
+    /**
      * permet d'initialiser le slug
      *
      * @ORM\PrePersist
@@ -139,6 +159,39 @@ class User implements UserInterface
         }
     }
     
+    /**
+     * calculer la note moyenne d'un utilisateur
+     * 
+     * @return number
+     */
+    
+    public function getAvgNotes(){
+        // calculer la somme des notes
+        
+        $sum = array_reduce(
+            $this->getRatings()->toArray(), function($total, $note){
+           return $total + $note->getNote(); 
+        }, 0);
+        
+        // faire la moyenne
+        if(count($this->ratings) > 0) return $sum / count($this->ratings);
+        
+        return 0;
+    }
+    
+    /**
+     * permet de recupere la note d'un author par rapport a un artisan
+     * 
+     * @param User $author
+     * @return \Doctrine\Common\Collections\Collection|\App\Entity\Rating[]|NULL
+     */
+    public function getRatingExist(User $author){
+        foreach ($this->ratings as $rating){
+            if($rating->getAuthor() === $author) return $rating;
+        }
+        return null;
+    }
+    
     public function getFullName(){
         return "{$this->firstName} {$this->lastName}";
     }
@@ -149,6 +202,8 @@ class User implements UserInterface
         $this->userRoles = new ArrayCollection();
         $this->comments = new ArrayCollection();
         $this->achats = new ArrayCollection();
+        $this->ratings = new ArrayCollection();
+        $this->no = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -416,6 +471,92 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($achat->getBuyer() === $this) {
                 $achat->setBuyer(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getJob(): ?string
+    {
+        return $this->job;
+    }
+
+    public function setJob(?string $job): self
+    {
+        $this->job = $job;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Rating[]
+     */
+    public function getRatings(): Collection
+    {
+        return $this->ratings;
+    }
+
+    public function addRating(Rating $rating): self
+    {
+        if (!$this->ratings->contains($rating)) {
+            $this->ratings[] = $rating;
+            $rating->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRating(Rating $rating): self
+    {
+        if ($this->ratings->contains($rating)) {
+            $this->ratings->removeElement($rating);
+            // set the owning side to null (unless already changed)
+            if ($rating->getUser() === $this) {
+                $rating->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Rating[]
+     */
+    public function getNo(): Collection
+    {
+        return $this->no;
+    }
+
+    public function addNo(Rating $no): self
+    {
+        if (!$this->no->contains($no)) {
+            $this->no[] = $no;
+            $no->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNo(Rating $no): self
+    {
+        if ($this->no->contains($no)) {
+            $this->no->removeElement($no);
+            // set the owning side to null (unless already changed)
+            if ($no->getAuthor() === $this) {
+                $no->setAuthor(null);
             }
         }
 
