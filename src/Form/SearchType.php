@@ -8,8 +8,8 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class SearchType extends ApplicationType
 {
-    const CITIES = ['rabat', 'casablanca', 'sale', 'kenitra', 'fes', 'marrakech', 'tanger', 'asilah', 'tetouan', 'agadir', 'laayoun', 'oujda', 'elhoceima'];
-    const JOB = ['plomberie', 'maconnerie', 'climatisation', 'chauffage', 'chauffeur','coiffeur', 'peinture', 'femme de ménage', 'soudeur'];
+    const CITIES = ['agadir','assilah', 'azrou','azilal','al hoceima','bouznika','berkan','boujdour','casablanca','chefchaouen','dakhla','essaouira','fes','fnideq','ifrane','jerada','kénitra','khémisset','khourbibga','laayoune','marrakesh','meknes','mohammédia','nadour','oujeda','ouarzazat','rabat','salé','safi','settat','tanger','témara','taza','tétouan','zagora'];
+    const JOB = ['balayeur','chaufage','charpenterie','electricité','fleuriste','menuisier','ouvrier du batiment','peintres','pompes a chaleur','plamberie','serrurerie','soudure','tapissier'];
     
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

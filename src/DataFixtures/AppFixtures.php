@@ -53,8 +53,8 @@ class AppFixtures extends Fixture
         //gestion des users
         
         $users = [];
-        $cities = ['rabat', 'casablanca', 'sale', 'kenitra', 'fes', 'marrakech', 'tanger', 'asilah', 'tetouan', 'agadir', 'laayoun', 'oujda', 'elhoceima'];
-        $job = ['plomberie', 'maconnerie', 'climatisation', 'chauffage', 'chauffeur','coiffeur', 'peinture', 'femme de ménage', 'soudeur'];
+        $cities = ['agadir','assilah', 'azrou','azilal','al hoceima','bouznika','berkan','boujdour','casablanca','chefchaouen','dakhla','essaouira','fes','fnideq','ifrane','jerada','kénitra','khémisset','khourbibga','laayoune','marrakesh','meknes','mohammédia','nadour','oujeda','ouarzazat','rabat','salé','safi','settat','tanger','témara','taza','tétouan','zagora'];
+        $job = ['balayeur','chaufage','charpenterie','electricité','fleuriste','menuisier','ouvrier du batiment','peintres','pompes a chaleur','plamberie','serrurerie','soudure','tapissier'];
         $genres = ['male', 'female'];
         
         for ($i = 1; $i <= 40; $i++) {
@@ -74,8 +74,8 @@ class AppFixtures extends Fixture
                  ->setAddress($faker->address)
                  ->setEmail($faker->email)
                  ->setAge(mt_rand(18, 60))
-                 ->setIntroduction($faker->sentence)
-                 ->setPhone($faker->phoneNumber)
+                 ->setIntroduction($faker->sentence( 6, true))
+                 ->setPhone($faker->e164PhoneNumber)
                  ->setHash($hash)
                  ->setCity($cities[mt_rand(0, count($cities) - 1)])
                  ->setJob($job[mt_rand(0, count($job) -1 )])
@@ -112,7 +112,7 @@ class AppFixtures extends Fixture
             
             $title = $faker->word;
             $coverImage = $faker->imageUrl(1000,350);
-            $introduction = $faker->paragraph(2);
+            $introduction = $faker->sentence( 6, true);
             
             $user = $users[mt_rand(0, count($users) - 1)];
             

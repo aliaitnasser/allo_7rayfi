@@ -15,25 +15,33 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class RegistrationType extends ApplicationType
 {
-    const JOB = ['Plomberie', 'MaÁonnerie', 'Climatisation', 'Chauffage'];
+    const JOB = [' ','balayeur','chaufage','charpenterie','electricit√©','fleuriste','menuisier','ouvrier du batiment','peintres','pompes a chaleur','plamberie','serrurerie','soudure','tapissier'];
+    const CITIES = ['agadir','assilah', 'azrou','azilal','al hoceima','bouznika','berkan','boujdour','casablanca','chefchaouen','dakhla','essaouira','fes','fnideq','ifrane','jerada','k√©nitra','kh√©misset','khourbibga','laayoune','marrakesh','meknes','mohamm√©dia','nadour','oujeda','ouarzazat','rabat','sal√©','safi','settat','tanger','t√©mara','taza','t√©touan','zagora'];
     
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstName', TextType::class, $this->getConfig("PrÈnom", "Votre prÈnom..."))
+            ->add('firstName', TextType::class, $this->getConfig("Pr√©nom", "Votre pr√©nom..."))
             ->add('lastName', TextType::class, $this->getConfig("Nom", "Votre nom..."))
             ->add('email', EmailType::class, $this->getConfig("Email", "Votre adresse Email..."))
-            ->add('age', IntegerType::class, $this->getConfig("‚ge", "Votre ‚ge..."))
-            ->add('phone', TextType::class, $this->getConfig("TÈlÈphone", "Votre tÈlÈphone..."))
+            ->add('age', IntegerType::class, $this->getConfig("√Çge", "Votre √¢ge..."))
+            ->add('phone', TextType::class, $this->getConfig("T√©l√©phone", "Votre t√©l√©phone..."))
             ->add('address', TextType::class, $this->getConfig("Adresse", "Votre adresse..."))
-            ->add('city', TextType::class, $this->getConfig("Ville", "Votre ville..."))
+            ->add('city', ChoiceType::class,[
+                'choices' => array_combine(self::CITIES, self::CITIES),
+                'label' => 'Ville',
+                'attr' => [
+                    'class' => 'text-capitalize']
+            ])
             ->add('job', ChoiceType::class,[
-                'choices' => array_combine(self::JOB, self::JOB)
-            ], $this->getConfig("MÈtier", "Selectionner votre mÈtier"))
+                'choices' => array_combine(self::JOB, self::JOB),
+                'label' => 'M√©tiers',
+                'attr' => ['class' => 'text-capitalize']
+            ])
             ->add('picture', UrlType::class, $this->getConfig("Photo de profile", "Url de votre photo..."))
             ->add('hash', PasswordType::class, $this->getConfig("Mot de passe", "Votre mot de passe..."))
             ->add('passwordConfirm', PasswordType::class, $this->getConfig("Confirmation de mot de passe", "Veuillez confirmer votre mot de passe..."))
-            ->add('introduction', TextareaType::class, $this->getConfig("PrÈentation", "PrÈsentez vous..."))
+            ->add('introduction', TextareaType::class, $this->getConfig("Pr√©sentation", "Pr√©sentez vous..."))
         ;
     }
 
