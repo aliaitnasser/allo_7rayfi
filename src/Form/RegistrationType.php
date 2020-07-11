@@ -21,27 +21,32 @@ class RegistrationType extends ApplicationType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstName', TextType::class, $this->getConfig("Prénom", "Votre prénom..."))
-            ->add('lastName', TextType::class, $this->getConfig("Nom", "Votre nom..."))
-            ->add('email', EmailType::class, $this->getConfig("Email", "Votre adresse Email..."))
-            ->add('age', IntegerType::class, $this->getConfig("Âge", "Votre âge..."))
-            ->add('phone', TextType::class, $this->getConfig("Téléphone", "Votre téléphone..."))
-            ->add('address', TextType::class, $this->getConfig("Adresse", "Votre adresse..."))
+            ->add('firstName', TextType::class, $this->getConfig("Prénom :", "Votre prénom..."))
+            ->add('lastName', TextType::class, $this->getConfig("Nom :", "Votre nom..."))
+            ->add('email', EmailType::class, $this->getConfig("Email :", "Votre adresse Email..."))
+            ->add('age', IntegerType::class, $this->getConfig("Âge :", "Votre âge..." ,[
+                'attr' =>  [
+                    'min' => 16,
+                    'max' => 120
+                ]
+            ]))
+            ->add('phone', TextType::class, $this->getConfig("Téléphone :", "Votre téléphone..."))
+            ->add('address', TextType::class, $this->getConfig("Adresse :", "Votre adresse..."))
             ->add('city', ChoiceType::class,[
                 'choices' => array_combine(self::CITIES, self::CITIES),
-                'label' => 'Ville',
+                'label' => 'Ville :',
                 'attr' => [
                     'class' => 'text-capitalize']
             ])
             ->add('job', ChoiceType::class,[
                 'choices' => array_combine(self::JOB, self::JOB),
-                'label' => 'Métiers',
+                'label' => 'Métiers :',
                 'attr' => ['class' => 'text-capitalize']
             ])
-            ->add('picture', UrlType::class, $this->getConfig("Photo de profile", "Url de votre photo..."))
-            ->add('hash', PasswordType::class, $this->getConfig("Mot de passe", "Votre mot de passe..."))
-            ->add('passwordConfirm', PasswordType::class, $this->getConfig("Confirmation de mot de passe", "Veuillez confirmer votre mot de passe..."))
-            ->add('introduction', TextareaType::class, $this->getConfig("Présentation", "Présentez vous..."))
+            ->add('picture', UrlType::class, $this->getConfig("Photo de profile :", "Url de votre photo..."))
+            ->add('hash', PasswordType::class, $this->getConfig("Mot de passe :", "Votre mot de passe..."))
+            ->add('passwordConfirm', PasswordType::class, $this->getConfig("Confirmation de mot de passe :", "Veuillez confirmer votre mot de passe..."))
+            ->add('introduction', TextareaType::class, $this->getConfig("Présentation :", "Présentez vous..."))
         ;
     }
 
